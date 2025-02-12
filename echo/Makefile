@@ -6,7 +6,7 @@ usage:
 	@echo ""
 	@echo "Targets:"
 	@echo "  build  - Build the binary"
-	@echo "  run    - Build and run the binary"
+	@echo "  run    - Run development server"
 	@echo "  clean  - Remove the binary"
 	@echo "  lint   - Run go fmt"
 
@@ -20,8 +20,7 @@ build:
 
 .PHONY: run
 run:
-	${MAKE} build
-	$(BIN)
+	go run cmd/echo-test/main.go
 
 .PHONY: clean
 clean:

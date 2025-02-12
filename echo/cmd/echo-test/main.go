@@ -1,7 +1,7 @@
 package main
 
 import (
-	"net/http"
+	"echo-test/handler"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -13,13 +13,7 @@ func main() {
 	e.Use(middleware.RequestID())
 	e.Use(middleware.Logger())
 
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
-	})
-	e.GET("/users", Users)
-	e.Logger.Fatal(e.Start(":1323"))
-}
+	handler.Register(e)
 
-func Users(c echo.Context) error {
-	return c.String(http.StatusOK, "Users")
+	e.Logger.Fatal(e.Start(":1323"))
 }
