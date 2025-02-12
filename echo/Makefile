@@ -7,6 +7,12 @@ usage:
 	@echo "Targets:"
 	@echo "  build  - Build the binary"
 	@echo "  run    - Build and run the binary"
+	@echo "  clean  - Remove the binary"
+	@echo "  lint   - Run go fmt"
+
+.PHONY: lint
+lint:
+	go fmt ./...
 
 .PHONY: builld
 build:
@@ -16,3 +22,7 @@ build:
 run:
 	${MAKE} build
 	$(BIN)
+
+.PHONY: clean
+clean:
+	rm -rf bin
